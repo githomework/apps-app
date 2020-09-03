@@ -42,6 +42,8 @@ func init() {
 	log.SetOutput(ff)
 	log.SetFlags(log.LstdFlags | log.Lshortfile)
 
+	// Config entry for the app, may reside in config.toml in the current folder, or another .toml file in another folder.
+	// The path of the .toml file is stated in config.toml in the current folder.
 	var configFile struct {
 		ConfigPath string `toml:"config_file"`
 	}
