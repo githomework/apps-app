@@ -8,7 +8,7 @@ import (
 	"github.com/BurntSushi/toml"
 )
 
-type appType struct {
+type AppType struct {
 	Folder         string
 	FolderAndSlash string
 	Name           string
@@ -17,11 +17,9 @@ type appType struct {
 	ConfigPath     string
 }
 
-var (
-	App appType
-)
 
-func init() {
+func New() AppType{
+	var App AppType
 	exe, _ := os.Executable()
 	// strange problem: if FolderAndSlash is used instead of f, the change in FolderAndSlash is not visible outside of this function.
 	f, n := filepath.Split(exe)
@@ -53,5 +51,6 @@ func init() {
 	}
 
 	App.ConfigPath = configFile.ConfigPath
+	return App
 
 }
