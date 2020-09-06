@@ -1,4 +1,4 @@
-module github.com/gitdlam/apps-app
+module github.com/githomework/apps-app
 
 go 1.14
 
