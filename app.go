@@ -52,7 +52,7 @@ func (app *AppType) Setup() {
 
 }
 
-func DecodeFileTOML(path string, configPtr *interface{}) {
+func DecodeFileTOML(path string, configPtr interface{}) {
 	if _, err := toml.DecodeFile(path, configPtr); err != nil {
 		log.Printf("%s, %s", path, err)
 	}
