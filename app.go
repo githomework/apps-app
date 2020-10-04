@@ -30,7 +30,7 @@ func (app *AppType) Setup() {
 		app.Name = app.Name[:len(app.Name)-4] // get rid of .exe of name
 	}
 
-	ff, err := os.OpenFile(app.FolderAndSlash+app.Name+".log", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
+	ff, err := os.OpenFile(app.FolderAndSlash+"log.txt", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
 	if err != nil {
 		log.Fatalf("error opening log file: %v", err)
 	}
@@ -50,4 +50,10 @@ func (app *AppType) Setup() {
 
 	app.ConfigPath = configFile.ConfigPath
 
+}
+
+func DecodeFileTOML(path string, configPtr *interface{}) {
+	if _, err := toml.DecodeFile(path, configPtr); err != nil {
+		log.Printf("%s, %s", path, err)
+	}
 }
