@@ -46,6 +46,11 @@ func ExtractSessionInfo(req *http.Request) map[string]string {
 			m["ref"] = string(value)
 		case 7:
 			m["content"] = string(value)
+		case 8:
+			m["queue_name"] = string(value)
+		case 9:
+			m["timeout"] = string(value)
+
 		}
 	}, []string{"session_id"},
 		[]string{"began"},
@@ -54,6 +59,8 @@ func ExtractSessionInfo(req *http.Request) map[string]string {
 		[]string{"brcd"},
 		[]string{"printer"},
 		[]string{"ref"},
-		[]string{"content"})
+		[]string{"content"},
+		[]string{"queue_name"},
+		[]string{"timeout"})
 	return m
 }
