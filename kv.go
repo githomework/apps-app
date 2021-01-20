@@ -22,7 +22,7 @@ func KVString(k string, db *sql.DB) (values []string) {
 
 func KVFloat(k string, db *sql.DB) (values []float64) {
 	// assumes postgresql syntax and specific table
-	dbRows, err := db.Query("select string_value from common.kv where key = $1", k)
+	dbRows, err := db.Query("select float_value from common.kv where key = $1", k)
 	if err != nil {
 		log.Println("Error in KVFloat():", err)
 		return
