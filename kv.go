@@ -12,6 +12,7 @@ func KVString(k string, db *sql.DB) (values []string) {
 		log.Println("Error in KVString():", err)
 		return
 	}
+	defer dbRows.Close()
 	for dbRows.Next() {
 		var s string
 		dbRows.Scan(&s)
@@ -27,6 +28,7 @@ func KVFloat(k string, db *sql.DB) (values []float64) {
 		log.Println("Error in KVFloat():", err)
 		return
 	}
+	defer dbRows.Close()
 	for dbRows.Next() {
 		var f float64
 		dbRows.Scan(&f)
